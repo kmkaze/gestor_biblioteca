@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Usuario{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Agregar Usuario</h1>
+  
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+  <form action="{{ url_for('agregar_usuario') }}" method="post">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese el apellido" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese el email" required>
+    </div>
+    <div class="mb-3">
+      <label for="contraseña" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingrese la contraseña" required>
+    </div>
+    <button type="submit" class="btn btn-success">Agregar Usuario</button>
+    <a href="{{ url_for('gestionar_usuarios') }}" class="btn btn-outline-primary ms-2">Cancelar</a>
+  </form>
+    <!-- Botón de Regresar -->
+  <div class="mt-3">
+    <a href="{{ url_for('gestionar_usuarios') }}" class="btn btn-outline-primary">Regresar al Menú Administrador</a>
+  </div>
+</div>
+{% endblock %}

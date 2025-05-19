@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Gestión de Libros{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Gestión de Libros</h1>
+
+  <div class="mb-4">
+
+    <a href="{{ url_for('agregar_libro') }}" class="btn btn-success me-2">Agregar Libro</a>
+    <a href="{{ url_for('eliminar_libro') }}" class="btn btn-danger">Eliminar Libro</a>
+  </div>
+  
+  <!-- Tabla de Libros -->
+  <h2>Lista de Libros</h2>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ISBN</th>
+        <th>Libro</th>
+        <th>Autor</th>
+        <th>Año</th>
+        <th>Editorial</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for libro in libros %}
+      <tr>
+        <td>{{ libro.isbn }}</td>
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.autor }}</td>
+        <td>{{ libro.año }}</td>
+        <td>{{ libro.editorial }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="5" class="text-center">No hay libros disponibles.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+
+  <div class="mt-3">
+    <a href="{{ url_for('menu_admin') }}" class="btn btn-outline-primary">
+      Regresar al Menú Administrador
+    </a>
+  </div>
+</div>
+{% endblock %}

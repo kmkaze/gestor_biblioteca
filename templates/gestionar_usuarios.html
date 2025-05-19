@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Gestión de Usuarios{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Gestión de Usuarios</h1>
+  
+-->
+  <div class="mb-4">
+    <a href="{{ url_for('agregar_usuario') }}" class="btn btn-success me-2">Agregar Usuario</a>
+    <a href="{{ url_for('eliminar_usuario') }}" class="btn btn-danger">Eliminar Usuario</a>
+  </div>
+  
+
+  <h2>Lista de Usuarios</h2>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in usuarios %}
+      <tr>
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.apellido }}</td>
+        <td>{{ usuario.email }}</td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="4" class="text-center">No hay usuarios disponibles.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+
+  <div class="mt-3">
+    <a href="{{ url_for('menu_admin') }}" class="btn btn-outline-primary">Regresar al Menú Administrador</a>
+  </div>
+</div>
+{% endblock %}

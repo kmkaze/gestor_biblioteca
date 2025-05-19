@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Menú Administrador{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Menú Administrador</h1>
+  <p>Bienvenido al sistema de gestión.</p>
+  
+
+  <div class="mb-4">
+    <a href="{{ url_for('gestionar_libros') }}" class="btn btn-primary me-2">
+      Gestión de Libros
+    </a>
+    <a href="{{ url_for('gestionar_usuarios') }}" class="btn btn-secondary">
+      Gestión de Usuarios
+    </a>
+  </div>
+
+
+  <div class="text-center my-4">
+    <img src="{{ url_for('static', filename='images/admin.jpg') }}" alt="Imagen Administrador" class="img-fluid" style="max-width:500px;">
+  </div>
+
+
+  <div class="text-center mt-4">
+    <a href="{{ url_for('login') }}" class="btn btn-danger">Salir</a>
+  </div>
+
+
+</div>
+{% endblock %}

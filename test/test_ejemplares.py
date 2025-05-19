@@ -1,7 +1,7 @@
 import pytest
 from src.Biblioteca import Biblioteca
 from src.Libro import Libro
-from src.ejemplares import ejemplares
+from src.Ejemplares import ejemplares
 
 @pytest.fixture
 def biblioteca():

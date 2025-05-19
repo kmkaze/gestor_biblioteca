@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Menú Usuario{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1>Menú de Usuario</h1>
+  
+
+  <div class="mb-4">
+    <a href="{{ url_for('reservar') }}" class="btn btn-success me-2">Reservar Libro</a>
+    <a href="{{ url_for('devolver') }}" class="btn btn-danger">Devolver Libro</a>
+  </div>
+
+
+  <h2>Libros Reservados</h2>
+  {% if reservados is defined and reservados|length > 0 %}
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>ISBN</th>
+          <th>Título</th>
+          <th>Autor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for libro in reservados %}
+        <tr>
+          <td>{{ libro.isbn }}</td>
+          <td>{{ libro.titulo }}</td>
+          <td>{{ libro.autor }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No tienes libros reservados.</p>
+  {% endif %}
+
+  <div class="text-center my-4">
+    <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="Imagen user" class="img-fluid" style="max-width:500px;">
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{{ url_for('login') }}" class="btn btn-danger">Salir</a>
+  </div>
+</div>
+{% endblock %}
